@@ -23,19 +23,20 @@ async function getYards() {
     // Convert API data to JSON:
     const allYardArr = await response.json();
 
-    // Accessing the holes tee boxes
-    const teeBoxes = allYardArr.holes[0].teeBoxes;
-    
-    let newYardage = [];
+    let allYardage = [];
 
-    // Push into iterable array, newYardage
-    // Looping through each tee box to access the "yards" data
-    teeBoxes.forEach(teeBox => {
-        const yards = teeBox.yards;
-        newYardage.push(yards);
+    // Iterate over each hole
+    allYardArr.holes.forEach(hole => {
+        const teeBoxes = hole.teeBoxes;
+
+        // Iterate over each tee box for the hole
+        teeBoxes.forEach(teeBox => {
+            // Push the yardage for each tee box to the array
+            allYardage.push(teeBox.yards);
+        });
     });
 
-    return newYardage;
+    return allYardage;
 }
 
 
@@ -48,7 +49,20 @@ async function buildPage() {
     // Populate yards HTML:
     for (let i = 0; i < newYardArr.length; i++) {
         // Create a new row for each number
-        yardage.innerHTML += "<td>" + newYardArr[i] + "</td>";
+        const row = document.createElement('tr');
+        const th = document.createElement('th');
+        const td = document.createElement('td');
+
+        // Set the text content of the cell to the yardage value
+        th.textContent = 'hello';
+        td.textContent = newYardArr[i];
+
+        // Append the th and td elements to the row
+        row.appendChild(th);
+        row.appendChild(td);
+
+        // Append the row to the yardage element
+        yardage.appendChild(row);
     }
 }
 
