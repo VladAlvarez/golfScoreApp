@@ -1,3 +1,38 @@
 input {
-    width: 3rem;
+    width: 2rem;
+}
+
+label {
+    padding: 10px 0px;
+    font-weight: bold;
+    color: white;
+}
+
+table {
+    border: 5px solid green;
+}
+
+.top-container {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+}
+
+.top {
+    /* background-color: lightgreen; */
+    width: 450px;
+    margin: 30px;
+}
+
+#scorecard-container {
+    background-color: whitesmoke;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#scorecard {
+    /* background-color:antiquewhite ; */
+    max-width: 450px;
+    padding: 0px;
 }
